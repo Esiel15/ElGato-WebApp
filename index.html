@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Gato</title>
+
+    <!-- Links to CSS files-->
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="styles/grid.css">
+
+    <!-- Font Awesome-->
+    <script src="https://kit.fontawesome.com/e06f7b173a.js" crossorigin="anonymous"></script>
+
+</head>
+<body>
+    <header>
+        <div class="title-container">
+            <h1 class="title">El <span class="title cat-word">gato</span> <i class="fas fa-cat"></i></h1>
+        </div>
+        <div class="game-buttons">
+            <div class="btn">
+                <div class="green-btn">
+                    <p><i class="fas fa-redo"></i></p>
+                </div>
+                <p class="btn-font">Reiniciar Puntuaciones</p>
+            </div>
+            <div class="btn">
+                <div class="green-btn">
+                    <p><i class="fas fa-gamepad"></i></p>
+                </div>
+                <p class="btn-font">Reiniciar Juego</p>
+            </div>
+        </div>
+    </header>
+
+    <div class="game-container">
+        <section class="player player-1">
+            <p class="id">Jugador 1</p>
+            <div class="player-name">
+                <input type="text" placeholder="Ingresa tu nombre">
+                <!--Añadir boton-->
+            </div>
+            <div class="piece-selection">
+                <p>Selecciona una ficha: </p>
+                <!--Imagen-->
+                <img class= "piece" src="images/x.png" alt="X">
+                <input type="radio" name="piece-player1" checked>
+                <!--Imagen-->
+                <img class= "piece" src="images/o.png" alt="O">
+                <input type="radio" name="piece-player1">
+            </div>
+            <div class="victories">
+                <p class="victories-label">Victorias</p>
+                <p>#</p>
+            </div>
+        </section>
+    
+        <section class="game">
+            <div class="player-turn">
+                <p class="turn-of">Es turno de:</p>
+                <!--Imagen-->
+                <p class="playerTurn">Jugador <span class="Player-turn-number">#</span></p>
+            </div>
+            <canvas class="boardgame">
+                
+            </canvas>
+        </section>
+        <section class="player player-2">
+            <p>Jugador 2</p>
+            <div class="player-name">
+                <input type="text" placeholder="Ingresa tu nombre">
+                <!--Añadir boton-->
+            </div>
+            <div class="piece-selection">
+                <!--Imagen-->
+                <img class= "piece" src="images/x.png" alt="X">
+                <input type="radio" name="piece-player2">
+                <!--Imagen-->
+                <img class= "piece" src="images/o.png" alt="O">
+                <input type="radio" name="piece-player2" checked>
+            </div>
+            <div class="victories">
+                <p class="victories-label">Victorias</p>
+                <p>#</p>
+            </div>
+        </section>
+    </div>
+    
+    <footer>
+        <p>Todos los derechos reservados Esiel Arizmendi</p>
+    </footer>
+</body>
+</html>
