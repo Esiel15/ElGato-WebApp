@@ -10,11 +10,6 @@
     grid-template-columns: 50% 50%;
 }*/
 
-body{
-    display: flex;
-    flex-direction: column;
-}
-
 
 /*          HEADER          */
 header{
@@ -47,6 +42,7 @@ header{
 /*          PLAYER          */
 .player{
     display: grid;
+    row-gap: 25px;
 }
 
 
@@ -54,22 +50,67 @@ header{
 .game-container{
     background-color: black;
     display: grid;
-    
-    grid-template-columns: repeat(5, 1rf);
+
+    grid-template-columns: 1fr 3fr 1fr;
+
+}
+.game{
+    display: flex;
+    flex-direction: column;
 }
 
-.game-container .player-1{
-    grid-column-start: 1;
-    grid-column-end: 2;
+.player-turn{
+    display: flex;
+    justify-content: space-around;
 }
 
-.game-container .game{
-    grid-column-start: 2;
-    grid-column-end: 5;
-}
 
-.game-container .player-2{
-    grid-column-start: 5;
-    grid-column-end: 6;
-}
 
+
+@media screen and (max-width: 800px){
+    header{
+        display: block;
+    }
+
+    .game-container{
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: 1fr 3fr;
+    }
+
+    .game-container .item1{
+        grid-column-start: 1;
+        grid-column-end: 2;
+    }
+
+
+    .game-container .item3{
+        grid-column-start: 2;
+        grid-column-end: 3;
+
+    }
+
+    .game-container .item2{
+        grid-column-start: 1;
+        grid-column-end: 3;
+        grid-row-start: 2;
+        grid-row-end: 3;
+    }
+
+    .player{
+        gap: 10px;
+    }
+    .player-name{
+        display: none;
+    }
+
+    .info, .victories > p {
+        font-size: 1.5rem;
+    }
+    .piece-selection > p {
+        font-size: 1.2rem;
+    }
+
+    .player-turn{
+        font-size: 1.5rem;
+    }
+}

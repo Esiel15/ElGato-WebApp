@@ -23,6 +23,16 @@ footer{
     background-color: #3FA5BE;
 }
 
+.btn:hover{
+    color: black;
+    cursor: pointer;
+}
+
+.btn:hover > .green-btn, .blue-btn:hover {
+    background-color: #EABB7B;
+    
+}
+
 /*      HEADER        */
 .title{
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
@@ -53,25 +63,32 @@ footer{
 .player{
     background-color: #5C91AD;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    height: 100%;
 }
 
-.player p {
+.info, .victories > p {
     font-size: 2rem;
 }
 
-input{
+.piece-selection > p {
+    font-size: 1.5rem;
+}
+
+
+
+input[type="text"]{
     font-size: 1.2rem;
+    text-align: center;
     border-radius: 10px;
 }
 
-.player .piece-selection {
-    font-family: 'Times New Roman', Times, serif;
-}
-
-.player .piece-selection{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.blue-btn{
+    background-color: #5FDDF5;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    width: 100px;
+    margin: 0 auto;
+    margin-top: 10px;
 }
 
 .player .piece {
@@ -82,11 +99,17 @@ input{
 
 
 /*              GAMEBOARD           */
+
+.game{
+    height: 100%;
+}
 .player-turn{
     background-color: #35AAB9;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 2rem;
 }
 
 .boardgame{
     background-color: #EABB7B;
-    width: 100%;
+    height: 100%;
 }

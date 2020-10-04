@@ -35,58 +35,73 @@
     </header>
 
     <div class="game-container">
-        <section class="player player-1">
-            <p class="id">Jugador 1</p>
-            <div class="player-name">
-                <input type="text" placeholder="Ingresa tu nombre">
-                <!--Añadir boton-->
-            </div>
-            <div class="piece-selection">
-                <p>Selecciona una ficha: </p>
-                <!--Imagen-->
-                <img class= "piece" src="images/x.png" alt="X">
-                <input type="radio" name="piece-player1" checked>
-                <!--Imagen-->
-                <img class= "piece" src="images/o.png" alt="O">
-                <input type="radio" name="piece-player1">
-            </div>
-            <div class="victories">
-                <p class="victories-label">Victorias</p>
-                <p>#</p>
-            </div>
-        </section>
-    
-        <section class="game">
-            <div class="player-turn">
-                <p class="turn-of">Es turno de:</p>
-                <!--Imagen-->
-                <p class="playerTurn">Jugador <span class="Player-turn-number">#</span></p>
-            </div>
-            <canvas class="boardgame">
+        <div class="item item1">
+            <section class="player player-1">
+                <div class="info">
+                    <p class="id">Jugador 1</p>
+                    <div class="player-name">
+                        <input type="text" placeholder="Ingresa tu nombre">
+                        <div class="btn blue-btn">
+                            <p>Actualizar</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="piece-selection">
+                    <p>Selecciona una ficha: </p>
+                    <div>
+                        <img class= "piece" src="images/x.png" alt="X">
+                        <input type="radio" name="piece-player1" checked>
+                        <img class= "piece" src="images/o.png" alt="O">
+                        <input type="radio" name="piece-player1">
+                    </div>
+                    
+                </div>
+                <div class="victories">
+                    <p class="victories-label">Victorias</p>
+                    <p>#</p>
+                </div>
+            </section>
+        </div>
+        
+        <div class="item item2">
+            <section class="game">
+                <div class="player-turn">
+                    <p class="turn-of">Es turno de:</p>
+                    <!--Imagen-->
+                    <p class="playerTurn">Jugador <span class="Player-turn-number">#</span></p>
+                </div>
+                <canvas class="boardgame"></canvas>
+            </section>
+        </div>
+        
+        <div class="item item3">
+            <section class="player player-2">
+                <div class="info">
+                    <p class="id">Jugador 2</p>
+                    <div class="player-name">
+                        <input type="text" placeholder="Ingresa tu nombre">
+                        <div class="btn blue-btn">
+                            <p>Actualizar</p>
+                        </div>
+                    </div>
+                </div>
                 
-            </canvas>
-        </section>
-        <section class="player player-2">
-            <p>Jugador 2</p>
-            <div class="player-name">
-                <input type="text" placeholder="Ingresa tu nombre">
-                <!--Añadir boton-->
-            </div>
-            <div class="piece-selection">
-                <!--Imagen-->
-                <img class= "piece" src="images/x.png" alt="X">
-                <input type="radio" name="piece-player2">
-                <!--Imagen-->
-                <img class= "piece" src="images/o.png" alt="O">
-                <input type="radio" name="piece-player2" checked>
-            </div>
-            <div class="victories">
-                <p class="victories-label">Victorias</p>
-                <p>#</p>
-            </div>
-        </section>
+                <div class="piece-selection">
+                    <p>Selecciona una ficha: </p>
+                    <div>
+                        <img class= "piece" src="images/x.png" alt="X">
+                        <input type="radio" name="piece-player2">
+                        <img class= "piece" src="images/o.png" alt="O">
+                        <input type="radio" name="piece-player2" checked>
+                    </div>
+                </div>
+                <div class="victories">
+                    <p class="victories-label">Victorias</p>
+                    <p>#</p>
+                </div>
+            </section>
+        </div>
     </div>
-    
     <footer>
         <p>Todos los derechos reservados Esiel Arizmendi</p>
     </footer>
