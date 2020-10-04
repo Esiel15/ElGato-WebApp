@@ -77,7 +77,7 @@ footer{
 
 
 input[type="text"]{
-    font-size: 1rem;
+    font-size: .9rem;
     text-align: center;
     border-radius: 10px;
     width: 75%;
@@ -101,6 +101,9 @@ input[type="text"]{
 
 /*              GAMEBOARD           */
 
+.game-container{
+    min-height: 500px;
+}
 .game{
     height: 100%;
 }
