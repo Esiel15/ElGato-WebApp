@@ -48,15 +48,14 @@ function drawPiece(event){
                 contPieces++;
 
                 if (validacionGanador()){
-                    alert(p1Name + " Jugador 1 es el ganador")
                     p1v.innerHTML = ++p1Wins;
+                    alert(p1Name + " Jugador 1 es el ganador")
                     reiniciarGato();
                 }
 
                 playerTurn = 2;
                 break;
             case 2:
-                console.log("ENTRA AQUI")
                 if (document.getElementById("p2X").checked === true){
                     dibujaEquis();
                 }else{
@@ -66,8 +65,8 @@ function drawPiece(event){
                 contPieces++;
 
                 if (validacionGanador()){
-                    alert(p2Name + " Jugador 2 es el ganador")
                     p2v.innerHTML = ++p2Wins;
+                    alert(p2Name + " Jugador 2 es el ganador")
                     reiniciarGato();
                 }
                 playerTurn = 1;
