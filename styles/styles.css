@@ -29,7 +29,7 @@ footer{
 }
 
 .btn:hover > .green-btn, .blue-btn:hover {
-    background-color: #EABB7B;
+    background-color: #35AAB9;
     
 }
 
@@ -99,7 +99,7 @@ input[type="text"]{
 
 
 
-/*              GAMEBOARD           */
+/*              GAME BOARD           */
 
 .game-container{
     min-height: 500px;

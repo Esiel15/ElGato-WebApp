@@ -51,9 +51,7 @@ header{
     justify-content: space-around;
 }
 
-
-
-
+/* RESPONSIVE DESIGN */
 @media screen and (max-width: 800px){
     header{
         display: block;

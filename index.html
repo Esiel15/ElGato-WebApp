@@ -11,21 +11,27 @@
 
     <!-- Font Awesome-->
     <script src="https://kit.fontawesome.com/e06f7b173a.js" crossorigin="anonymous"></script>
-
 </head>
-<body>
+<body onload="dibujarGato()">
+
+    <!-- HEADER -->
     <header>
         <div class="title-container">
             <h1 class="title">El <span class="title cat-word">gato</span> <i class="fas fa-cat"></i></h1>
         </div>
+        <!-- BUTTONS -->
         <div class="game-buttons">
-            <div class="btn">
+
+            <!-- Reiniciar puntuaciones button-->
+            <div class="btn" onclick="reiniciarPuntuaciones()">
                 <div class="green-btn">
                     <p><i class="fas fa-redo"></i></p>
                 </div>
                 <p class="btn-font">Reiniciar Puntuaciones</p>
             </div>
-            <div class="btn">
+
+            <!-- Reiniciar juego button-->
+            <div class="btn" onclick="reiniciarGato()">
                 <div class="green-btn">
                     <p><i class="fas fa-gamepad"></i></p>
                 </div>
@@ -34,76 +40,104 @@
         </div>
     </header>
 
+    <!-- GAME BOARD -->
     <div class="game-container">
+
+        <!-- PLAYER 1-->
         <div class="item item1">
+
+            <!-- Player 1 name-->  
             <section class="player player-1">
                 <div class="info">
                     <p class="id">Jugador 1</p>
                     <div class="player-name">
-                        <input type="text" placeholder="Ingresa tu nombre">
-                        <div class="btn blue-btn">
+                        <input type="text" placeholder="Ingresa tu nombre" id="p1NameInput">
+
+                        <!-- Player 1 update name button-->  
+                        <div class="btn blue-btn" onclick="changeName(1)">
                             <p>Actualizar</p>
                         </div>
                     </div>
                 </div>
+
+                <!-- Player 1 piece selection-->  
                 <div class="piece-selection">
                     <p>Selecciona una ficha: </p>
                     <div>
-                        <img class= "piece" src="images/x.png" alt="X">
-                        <input type="radio" name="piece-player1" checked>
-                        <img class= "piece" src="images/o.png" alt="O">
-                        <input type="radio" name="piece-player1">
+                        <img class= "piece" src="images/x.png" alt="X" >
+                        <input type="radio" name="piece-player1" id="p1X" checked onclick="changePiece(1)">
+                        <img class= "piece" src="images/o.png" alt="O" >
+                        <input type="radio" name="piece-player1" id="p1O" onclick="changePiece(2)">
                     </div>
-                    
+
+                <!-- Player 1 victories-->    
                 </div>
                 <div class="victories">
                     <p class="victories-label">Victorias</p>
-                    <p>#</p>
+                    <p id="p1v">0</p>
                 </div>
             </section>
         </div>
         
+        <!-- Board -->  
         <div class="item item2">
             <section class="game">
+
+                <!-- Player turn section-->
                 <div class="player-turn">
                     <p class="turn-of">Es turno de:</p>
                     <!--Imagen-->
-                    <p class="playerTurn">Jugador <span class="Player-turn-number">#</span></p>
+                    <p class="playerTurn" id="playerTurn">Jugador #</p>
                 </div>
-                <canvas class="boardgame"></canvas>
+                <!-- CANVAS -->
+                <canvas class="boardgame" id="canvas" onmousedown="drawPiece(event)"></canvas>
             </section>
         </div>
         
+        <!-- PLAYER 2-->
         <div class="item item3">
+
+            <!-- Player 2 name--> 
             <section class="player player-2">
                 <div class="info">
                     <p class="id">Jugador 2</p>
                     <div class="player-name">
-                        <input type="text" placeholder="Ingresa tu nombre">
-                        <div class="btn blue-btn">
+                        <input type="text" placeholder="Ingresa tu nombre" id="p2NameInput">
+                        
+                        <!-- Player 2 update name button--> 
+                        <div class="btn blue-btn" onclick="changeName(2)">
                             <p>Actualizar</p>
                         </div>
                     </div>
                 </div>
                 
+                <!-- Player 2 piece selection-->  
                 <div class="piece-selection">
                     <p>Selecciona una ficha: </p>
                     <div>
-                        <img class= "piece" src="images/x.png" alt="X">
-                        <input type="radio" name="piece-player2">
+                        <img class= "piece" src="images/x.png" alt="X" >
+                        <input type="radio" name="piece-player2" id="p2X" onclick="changePiece(3)">
                         <img class= "piece" src="images/o.png" alt="O">
-                        <input type="radio" name="piece-player2" checked>
+                        <input type="radio" name="piece-player2" id="p2O" checked onclick="changePiece(4)">
                     </div>
                 </div>
+
+                <!-- Player 2 victories-->  
                 <div class="victories">
                     <p class="victories-label">Victorias</p>
-                    <p>#</p>
+                    <p id="p2v">0</p>
                 </div>
             </section>
         </div>
     </div>
+
+    <!-- FOOTER -->
     <footer>
         <p>Todos los derechos reservados Esiel Arizmendi</p>
     </footer>
+
+    <!-- Script-->
+    <script src="js/script.js"></script>
 </body>
+    
 </html>
