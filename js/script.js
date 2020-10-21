@@ -12,13 +12,13 @@ var px, py;
 
 
 var p1Name = ""; //Nombre del jugador 1
-var p1Wins = 0; // player 1's won games
+var p1Wins = 0; 
 var p2Name = ""; //Nombre del jugador 2
-var p2Wins = 0; // player 2's won games
+var p2Wins = 0; 
 var playerTurn; //Turno del jugador del juego actual
 var contPieces; //Total de piezas en el tablero del juego actual
 
-//Crear Tablero. SOLO SE HACE ÇUNA VEZ CUANDO SE CARGA LA PÁGINA
+//Crear Tablero. SOLO SE HACE UNA VEZ CUANDO SE CARGA LA PÁGINA
 var board = new Array(3);
 for (var i = 0 ; i < 3 ; i++){
     board[i] = new Array(3);
