@@ -4,12 +4,13 @@ var pTurn = document.getElementById("playerTurn");
 var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
 
-var gridWidth = canvas.width/3;
-var gridHeight = canvas.height/3;
+
+var n = 6;
+var m = 4;
+var gridWidth = canvas.width/n;
+var gridHeight = canvas.height/n;
 var rectWidth, rectHeight;
 var px, py;
-
-
 
 var p1Name = ""; //Nombre del jugador 1
 var p1Wins = 0; 
@@ -19,9 +20,9 @@ var playerTurn; //Turno del jugador del juego actual
 var contPieces; //Total de piezas en el tablero del juego actual
 
 //Crear Tablero. SOLO SE HACE UNA VEZ CUANDO SE CARGA LA PÁGINA
-var board = new Array(3);
-for (var i = 0 ; i < 3 ; i++){
-    board[i] = new Array(3);
+var board = new Array(n);
+for (var i = 0 ; i < n ; i++){
+    board[i] = new Array(n);
 }
 iniciarJuego();
 
@@ -31,9 +32,13 @@ function drawPiece(event){
     //console.log("Y: " + pos.y);
 
     px = Math.trunc(pos.x/rectWidth);
-    //console.log("PX: " + px);
-    py = Math. trunc(pos.y/rectHeight);
+    console.log("PX: " + px);
+    //py = Math. trunc(pos.y/rectHeight);
     //console.log("PY: " + py);
+    py = 0;
+    while (board[px][py] === 0 && py < n)
+        py++;
+    py--;
 
     if (board[px][py] === 0){
         disablePieceOption(true);
@@ -44,13 +49,16 @@ function drawPiece(event){
                 }else{
                     dibujaCirculo();
                 }
-                board[px][py] = 1;
+                board[px][py] = playerTurn;
                 contPieces++;
 
                 if (validacionGanador()){
                     p1v.innerHTML = ++p1Wins;
-                    alert(p1Name + " Jugador 1 es el ganador")
-                    reiniciarGato();
+                    setTimeout(() => {
+                        alert((p1Name === "" ? "Jugador 1" : p1Name) + " GANO!")
+                        reiniciarGato();
+                    }, 100);
+                    
                 }
 
                 playerTurn = 2;
@@ -61,26 +69,28 @@ function drawPiece(event){
                 }else{
                     dibujaCirculo();
                 }
-                board[px][py] = 2;
+                board[px][py] = playerTurn;
                 contPieces++;
 
                 if (validacionGanador()){
                     p2v.innerHTML = ++p2Wins;
-                    alert(p2Name + " Jugador 2 es el ganador")
-                    reiniciarGato();
+                    setTimeout(() => {
+                        alert((p2Name === "" ? "Jugador 2" : p2Name) + " GANO!")
+                        reiniciarGato();
+                    }, 100);
                 }
                 playerTurn = 1;
                 break;
         }
-        for (var i = 0 ; i < 3 ; i++)
-            console.log(board[i]);
+        /*for (var i = 0 ; i < n ; i++)
+            console.log(board[i]);*/
 
         setPlayerTurn();
     }else{
-        alert("Esta casilla ya está ocupada, selecciona otra");
+        alert("Esta casilla ya está llena, selecciona otra");
     }
     
-    if (contPieces == 9){
+    if (contPieces === n * n){
         alert("NO HUBO GANADOR")
         reiniciarGato();
     } 
@@ -90,6 +100,7 @@ function drawPiece(event){
 
 
 function validacionGanador(){
+    /*
     if (contPieces >= 5){
         console.log("Validar ganador");
         if ((board[0][0] === board[1][0] && board[1][0] === board[2][0] && board[2][0] != 0) ||
@@ -107,6 +118,109 @@ function validacionGanador(){
         }
     }
     return false;
+    */
+    cont = 0;
+    i = px - (m-1);
+   if (i < 0) i = 0;
+    j = px + (m-1);
+   if (j >= n) j = n-1;
+    k = i;
+
+   //HORIZONTAL
+   while (k <= j){
+       if (board[k][py] == playerTurn){
+           cont++;
+       }else{
+           cont = 0;
+       }
+       if (cont === m) {
+           return true;
+       }
+       k++;
+   }
+
+
+   //VERTICAL
+   cont = 0;
+   if (py + (m-1) < n){
+       k = py;
+       while(k <= (py + (m-1))){
+           if (board[px][k] === playerTurn){
+               cont++;
+           }else{
+               cont = 0;
+           }
+           if (cont === m)
+               return true;
+           
+           k++;
+       }
+   }
+
+   //CRUZADA : De derecha abajo a izquierda arriba
+   let x, x2, y, y2;
+   cont = 0;
+    x = px - (m-1);
+   if (x < 0) x = 0;
+    y = py - (m-1);
+   if (y < 0) y = 0;
+
+    x2 = px + (m-1);
+   if (x2 >= n) x2 = n - 1;
+    y2 = py + (m-1);
+   if (y2 >= n) y2 = n - 1;
+
+   i = x2;
+   j = y2;
+
+   while (i >= x && j >= y){
+       if (board[i][j] === playerTurn){
+           cont++;
+       }else{
+           cont = 0;
+       }
+       if (cont===m){
+           return true;
+       } 
+       i--;
+       j--;
+   }
+
+   //CRUZADA : De izquierda abajo a derecha arriba
+   cont = 0;
+    x = px - (m - 1);
+   if (x < 0) x = 0;
+    y = py + (m - 1);
+   if (y < 0) y = (n - 1);
+
+    x2 = px + (m - 1);
+   if (x2 >= n) x2 = n - 1;
+    y2 = py - (m - 1);
+   if (y2 >= n) y2 = 0;
+
+   i = x;
+   j = y;
+
+   while (i <= x2 && j >= y2){
+       if (board[i][j] === playerTurn){
+           cont++;
+       }else{
+           cont = 0;
+       }
+       if (cont===m){
+           return true;
+       } 
+       i++;
+       j--;
+   }
+
+
+
+
+
+   
+
+
 }
 
 function iniciarJuego(){
@@ -146,8 +260,8 @@ function reiniciarGato(){
 }
 
 function restartBoard(){
-    for (var i = 0 ; i < 3 ; i++)
-        for (var j = 0 ; j < 3 ; j++)
+    for (var i = 0 ; i < n ; i++)
+        for (var j = 0 ; j < n ; j++)
             board[i][j] = 0;
 }
 
@@ -176,14 +290,14 @@ function changeName(num){
 /* COORDENADAS */
 /* Las coordenadas son respecto a la pantalla */
 function getPosition(event){
-    let rect = canvas.getBoundingClientRect();
+     rect = canvas.getBoundingClientRect();
 
     //console.log("rect width = " + rect.width);
-    rectWidth = rect.width/3;
+    rectWidth = rect.width/n;
     //console.log("rect height = " + rect.height)
-    rectHeight = rect.height/3;
-    let x = event.clientX - rect.left;
-    let y = event.clientY - rect.top;
+    rectHeight = rect.height/n;
+     x = event.clientX - rect.left;
+     y = event.clientY - rect.top;
 
     return {x, y};
 }
@@ -218,7 +332,7 @@ function dibujaCirculo(){
 function dibujarGato() {
     console.log("Dibuja Gato")
     var i;
-    for (i = 1 ; i < 3 ; i++){
+    for (i = 1 ; i < n ; i++){
         ctx.beginPath();
             // Lineas paralelas
             ctx.moveTo(i*gridWidth, 0);
@@ -273,6 +387,3 @@ function changePiece(opc){
     }
 
 }
-
-
-
